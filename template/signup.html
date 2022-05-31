@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}SIGNUP{% endblock title %}
+
+
+{% block body %}
+<div class="bg-image p-5   mb-5 text-black" style="background-image:url(static/d1.jpg);background-size:cover;height:80vh;">
+<div class="container mt-1">
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 jumbotron">
+    <h4 class="text-center bg-info">Signup Form</h4>
+    <br>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/signup" method="POST" autocomplete="off">
+      <div class="mb-3">
+        <label for="username" class="form-label">User ID</label>
+        <input type="number" class="form-control" id="username" name="userid" placeholder="enter any number" required>
+      </div>
+      <div class="mb-3">
+          <label for="username" class="form-label">User Name</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="useremail" required>
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="pass" name="userpassword" required>
+        <div id = "show"> <input type="checkbox" onclick="passcheck()"> Show Password</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br> 
+    Already an user <a href="login" class="loginhere">login here</a>
+  </div>
+    <div class="col-md-4"></div>
+    </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+  {% endblock body %}
+

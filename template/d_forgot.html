@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}CHANGE PASSWORD{% endblock title %}
+
+{% block body %}
+<div class="container mt-1">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 jumbotron">
+        <h4 class="text-center bg-info">DOCTOR PASSWORD CHANGE FORM</h4>
+        <br>
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+        <form action="/forgot_pass" method="POST" autocomplete="off">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="d_email" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pass" name="d_password" placeholder="entr your new password" required>
+            <div id = "show"> <input type="checkbox" onclick="passcheck()"> Show Password</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Update password</button>
+        </form>
+        <br> 
+      </div>
+        <div class="col-md-4"></div>
+        </div>
+       </div>
+{% endblock body %}

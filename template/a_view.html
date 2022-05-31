@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}DETAILS{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="bg-image p-5   mb-5 text-black" style="background-image:url(static/Medical-Clinic1.jpg);background-size:cover;height:90vh">
+    
+  <div class="container  jumbotron">
+        <h4 class="text-center bg-info mt-3">APPOINTMENT DETAILS </h4>
+        <table class="table table-dark table-hover mt-5" id="table" border="1">
+            <thead>
+              <tr>
+                <th scope="col">BOOKING ID</th>
+                <th scope="col">CLINIC NAME</th>
+                <th scope="col">CLINIC ADDRESS</th>
+                <th scope="col">DOCTOR</th>
+                <th scope="col">PATIENT EMAIL</th>
+                <th scope="col">PATIENT NAME</th>
+                <th scope="col">PATIENT GENDER</th>
+                <th scope="col">SLOT</th>
+                <th scope="col">START TIME</th>
+                <th scope="col">END TIME</th>
+                <th scope="col">DATE</th>
+                <th scope="col">DISEASE</th>
+                <th scope="col">PHONE</th>
+              </tr>
+            </thead>
+            <tbody>
+             {% for data in datas %}
+             <tr>
+                 <td>{{data.b_id}}</td>
+                 <td>{{data.c_name}}</td>
+                 <td>{{data.c_address}}</td>
+                 <td>{{data.d_name}}</td>
+                 <td>{{data.p_email}}</td>
+                 <td>{{data.p_name}}</td>
+                 <td>{{data.p_gender}}</td>
+                 <td>{{data.slot}}</td>
+                 <td>{{data.start_time}}</td>
+                 <td>{{data.end_time}}</td>
+                 <td>{{data.date}}</td>
+                 <td>{{data.disease}}</td>
+                 <td>{{data.p_phone}}</td>
+             </tr>
+             <a href="/a_remove/{{data.date}}"><button onclick="return confirm('Are you sure ,you want to remove appointment');" class="btn btn-danger">Remove Appointment</button> </a> </td>
+             {% endfor %}
+            </tbody>
+          </table>
+</div>
+</div>
+{% endblock body %}

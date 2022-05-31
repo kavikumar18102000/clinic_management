@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}CLINICS{% endblock title %}
+
+{% block body %}
+<div class="bg-image p-5   mb-5 text-black" style="background-image:url(static/d11.jpg);background-size:cover;height:95vh">
+<div class="container  jumbotron">
+  <h4 class="text-center bg-info mt-3">CLINICS IN YOUR LOCATION </h4>
+<table class="table table-dark table-hover mt-5" id="table" border="1">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">DOCTOR IN CHARGE</th>
+      <th scope="col">CLINIC PHONE</th>
+      <th scope="col">OPEN_TIME(AM)</th>
+      <th scope="col">CLOSE_TIME(AM)</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for data in datas %}
+   <tr>
+       <td>{{data.id}}</td>
+       <td>{{data.c_name}}</td>
+       <td>{{data.c_address}}</td>
+       <td>{{data.d_name}}</td>
+       <td>{{data.c_phone}}</td>
+       <td>{{data.open_time}}</td>
+       <td>{{data.close_time}}</td>
+       <td><a href="/book"><button  class="btn btn-success">Book Appointment</button> </a></td>
+   </tr>
+   {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+
+{% endblock body %}

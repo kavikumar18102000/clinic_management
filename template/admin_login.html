@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}ADMIN LOGIN{% endblock title %}
+
+{% block body %}
+<div class="container mt-5" >
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 jumbotron">
+        <h4 class="text-center bg-info">Admin Login</h4>
+        <br>
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/admin_login" method="POST" autocomplete="off">
+          <div class="mb-3">
+            <label for="" class="form-label">User name</label>
+            <input type="text" class="form-control" id="" aria-describedby="e" name="u_name" placeholder="enter your username" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pass" name="u_pass" placeholder="enter your password" required>
+            <div id = "show"> <input type="checkbox" onclick="passcheck()"> Show Password</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    </div>
+  </div>
+{% endblock body %}

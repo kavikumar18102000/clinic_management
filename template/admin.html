@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}ADMIN{% endblock title %}
+
+{% block body %}
+<div class="container mt-1">
+         <div class="a_view">
+<form action="/a_view" method="POST" autocomplete="off">
+  SORT_APPOINTMENTS_BY DATE <input type="date" name="date"></option>
+  <input type="submit" value="search">
+</form>
+</div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 jumbotron">
+        <h4 class="text-center bg-info">ADD DOCTOR </h4>
+        <br>
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/add_doc" method="POST" autocomplete="off">
+          <div class="mb-3">
+            <label for="" class="form-label">Doctor Id</label>
+            <input type="number" class="form-control" id="" aria-describedby="" name="did" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Doctor Name</label>
+            <input type="text" class="form-control" id="" aria-describedby="" name="d_name" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="d_email" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Doctor phone</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="d_phone" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pass" name="d_pass" required>
+            <div id = "show"> <input type="checkbox" onclick="passcheck()"> Show Password</div>
+          </div>
+          <br>
+          <div class="d-grid gap-2">
+            <button  class="btn btn-success" type="submit">Add Doctor</button> </a>
+          </div>
+        </form>
+        <br>
+        <div class="d-grid gap-2">
+          <a href="/logout_admin"><button  class="btn btn-danger">Logout</button> </a>
+        </div>
+        
+
+      </div>
+        <div class="col-md-4"></div>
+        </div>
+       </div>
+
+{% endblock body %}

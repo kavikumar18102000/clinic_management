@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}APPOINTMENTS{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<h4 class="text-center bg-info mt-3">YOUR APPOINTMENT FOR TODAY </h4>
+<div class="d_view">
+<form action="/date_view" method="POST" autocomplete="off">
+  SORT_BY DATE <input type="date" name="date"></option>
+  <input type="submit" value="search">
+</form>
+</div>
+</div>
+<div class="col-md-4 mt-3"></div>
+</div>
+{% for data in datas %}
+<div class="container  jumbotron bg-warning">
+    
+         <strong>BOOKING ID</strong> : {{data.b_id}} <br>
+         <strong>PATIENT NAME</strong> : {{data.p_name}} <br>
+         <strong>PATIENT EMAIL</strong> : {{data.p_email}} <br>
+         <strong>PATIENT CONTACT</strong> : {{data.p_phone}} <br>
+         <strong>CLINIC NAME</strong> : {{data.c_name}} <br>
+         <strong>DOCTOR</strong> : {{data.d_name}} <br>
+         <strong>PATIENT GENDER</strong> : {{data.p_gender}} <br>
+         <strong>SLOT</strong> : {{data.slot}} <br>
+         <strong>DATE</strong> : {{data.date}} <br>
+         <strong>TIME</strong> : {{data.start_time}} <br>
+         <strong>DISEASE</strong> : {{data.disease}} <br>
+         <br>
+         <br>
+         <a href="/report/{{data.b_id}}"><button  class="btn btn-success">Enter Report</button> </a>
+         
+</div>
+<hr>
+{% endfor %}
+{% endblock body %}

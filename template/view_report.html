@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}REPORT{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<h4 class="text-center bg-info mt-3">YOUR TREATMENT REPORTS </h4>
+</div>
+<div class="col-md-4 mt-3"></div>
+</div>
+{% for data in datas %}
+<div class="container  jumbotron ">
+    
+         <strong>BOOKING ID</strong> : {{data.b_id}} <br>
+         <strong>PATIENT NAME</strong> : {{data.p_name}} <br>
+         <strong>PATIENT AGE</strong> : {{data.p_age}} <br>
+         <strong>PATIENT EMAIL</strong> : {{data.p_email}} <br>
+         <strong>PATIENT CONTACT</strong> : {{data.p_phone}} <br>
+         <strong>CLINIC NAME</strong> : {{data.clinic_name}} <br>
+         <strong>DOCTOR</strong> : {{data.d_name}} <br>
+         <strong>TREATMENT TOOK ON DATE</strong> : {{data.date}} <br>
+         <strong>TREATMENT TOOK FOR DISEASE</strong> : {{data.p_disease}} <br>
+         <br>
+         <br>
+         <h4 class="mp"><strong>MEDICINE PRESCRIBED</strong></h4>  {{data.medicine_type}} <br>
+         <br>
+         <a href="/remove/{{data.b_id}}"><button onclick="return confirm('Are you sure ,you want to remove report');" class="btn btn-danger">Remove</button> </a>
+         
+</div>
+<hr>
+{% endfor %}
+{% endblock body %}
