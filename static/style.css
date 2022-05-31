@@ -1,0 +1,58 @@
+
+ .search{
+    margin-top: 200px;
+    margin-left: 100px;
+    width: 700px;
+    padding: 10px;
+    border-radius: 30px;
+
+}
+
+
+.searchbutton{
+    margin-top: 200px;
+    margin-left: 3px;
+    border-radius: 30px;
+    padding: 10px;
+    width: 100px;
+    background-color:yellowgreen
+}
+.searchbutton:hover{
+    color:red
+}
+.loginhere,.registerhere{
+    color:rgb(255, 5, 5);
+    font-style: italic;
+    font-weight: bolder;
+}
+.appoint,.view{
+    margin:50px 0 0 100px;
+}
+
+#doc{
+    align-items: center;
+    text-align:start;
+}
+#reg{
+    margin-left: 100px;
+}
+
+.fp{
+    margin-left: 200px;
+}
+
+.up{
+    margin-left: 100px;
+}
+.d_view{
+    margin-left: 100px;
+    margin-top: 10px;
+}
+#show{
+    margin-top: 10px;
+    margin-left: 270px;
+}
+
+.a_view{
+    margin: 50px 700px 0px 0px;
+}
